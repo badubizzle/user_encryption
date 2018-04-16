@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="csrf_token" content="<%= get_csrf_token() %>">
+
+    <title>Hello UserEncryption!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.css") %>">
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <nav role="navigation">
+          <ul class="nav nav-pills pull-right">
+            <li>
+            <%= if Plug.Conn.get_session(@conn, :user) do %>
+            <%= Plug.Conn.get_session(@conn, :user) |> Map.get(:name) %>                        
+            <% end %>
+            </li>
+          </ul>
+        </nav>
+        <span class="logo"></span>
+      </header>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <%= if Plug.Conn.get_session(@conn, :user) do %>                        
+            <a href="/encrypt">Encrypt</a>
+            | <a href="/decrypt">Decrypt</a>
+            | <a href="/changepassword">Change Pwd</a>
+            | <a href="/logout">Logout</a>
+            <% end %>
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

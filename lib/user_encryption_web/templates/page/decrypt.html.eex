@@ -1,0 +1,7 @@
+
+<div class="row marketing">
+  <%= for d <- @data do %>
+    <p><strong>Hash: </strong><%= d.hash %></p>
+    <p><strong>Data: </strong><%= d.data %></p>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<div class="row marketing">
+  <form name="register" method="post">    
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+    <textarea name="data" class="field" style="height:100px; width: 300px;"></textarea>
+    <input type="Submit" value="Encrypt" class="field" />
+</form>
+<br/>
+<%= for d <- @data do %>
+    <p><strong>Hash: </strong><%= d.hash %></p>
+    <p>
+    <form method="post" action="/decrypt/<%= d.id %>"> 
+      <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+      <input type="Submit" value="Decrypt" class="field" />
+    </form></p>
+<% end %>
+
+</div>

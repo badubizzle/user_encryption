@@ -1,0 +1,14 @@
+<div class="jumbotron">
+<form name="login" method="post">    
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+    
+    <input placeholder="Email" name="email" type="email"  class="field" />
+    <input placeholder="Password" name="password" type="password" class="field"  />
+    
+    <input type="Submit" value="Login" class="field" />
+</form>
+</div>
+
+<div class="row marketing">
+  
+</div>
