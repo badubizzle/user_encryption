@@ -1,14 +1,13 @@
-<div class="jumbotron">
-<form name="register" method="post">    
+
+<div class="row marketing">
+
+  <form name="register" method="post">
+  <h4>Register</h4>    
     <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
     <input placeholder="Name" name="name" type="text" class="field" />
     <input placeholder="Email" name="email" type="email"  class="field" />
     <input placeholder="Password" name="password" type="password" class="field"  />
     <input placeholder="Confirm Password" name="confirm_password" type="password" class="field"  />
-    <input type="Submit" value="Register" />
+    <input type="Submit" value="Register"  class="field"/>
 </form>
-</div>
-
-<div class="row marketing">
-  
 </div>

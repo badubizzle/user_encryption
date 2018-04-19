@@ -8,6 +8,7 @@
 <%= for d <- @data do %>
     <p><strong>Hash: </strong><%= d.hash %></p>
     <p>
+    <!-- -->
     <form method="post" action="/decrypt/<%= d.id %>"> 
       <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
       <input type="Submit" value="Decrypt" class="field" />

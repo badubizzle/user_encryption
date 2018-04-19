@@ -22,15 +22,21 @@ defmodule UserEncryptionWeb.PageController do
 
   def do_register(conn, %{"name"=>name, "email"=> email, 
   "password"=>password, 
-  "confirm_password"=>confirm})do
-    case UserEncryption.Account.create_user(%{name: name, email: email, password: password}) do
-      {:ok, u}->
-        conn
-        |>put_session(:user, u)
-        |>redirect(to: "/encrypt")
-      _ -> 
+  "confirm_password"=>confirm_password})do
+    case confirm_password === password do
+      true->
+        case UserEncryption.Account.create_user(%{name: name, email: email, password: password}) do
+          {:ok, u}->
+            conn
+            |>clear_session()
+            |>redirect(to: "/login")
+          _ -> 
+            conn|>redirect(to: "/register")
+        end
+      _ ->
         conn|>redirect(to: "/register")
     end
+    
   end
 
   def logout(conn, _p)do
@@ -97,7 +103,7 @@ defmodule UserEncryptionWeb.PageController do
   end
 
   
-  def change_password(conn, %{"old_password"=>old_password, "new_password"=>new_password})do    
+  def do_change_password(conn, %{"old_password"=>old_password, "new_password"=>new_password})do    
     user = get_session(conn, :user)    
     case UserEncryption.Account.validate_user(user, old_password)do
       %{key: key}->

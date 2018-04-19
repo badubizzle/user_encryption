@@ -20,7 +20,7 @@
           <ul class="nav nav-pills pull-right">
             <li>
             <%= if Plug.Conn.get_session(@conn, :user) do %>
-            <%= Plug.Conn.get_session(@conn, :user) |> Map.get(:name) %>                        
+            Welcome, <%= Plug.Conn.get_session(@conn, :user) |> Map.get(:name) %>                        
             <% end %>
             </li>
           </ul>

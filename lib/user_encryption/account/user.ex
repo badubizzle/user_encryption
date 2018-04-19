@@ -39,8 +39,8 @@ defmodule UserEncryption.Account.User do
     
   end
 
-  def put_password(c)do
-    c
+  def put_password(changeset)do
+    changeset
   end
 
   def put_key_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}}=changeset)do
@@ -49,8 +49,8 @@ defmodule UserEncryption.Account.User do
     |>put_change(:key_hash, key_hash)
   end
 
-  def put_key_hash(c)do
-    c
+  def put_key_hash(changeset)do
+    changeset
   end
   
 end

@@ -1,6 +1,5 @@
 defmodule UserEncryption.Security.Utils do
 
-    
     defp encode(d)do
         d        
         |> Base.encode64()

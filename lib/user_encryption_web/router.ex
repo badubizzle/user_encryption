@@ -45,7 +45,7 @@ defmodule UserEncryptionWeb.Router do
     get "/decrypt", PageController, :do_decrypt
     
     get "/changepassword", PageController, :change_password
-    post "/changepassword", PageController, :change_password
+    post "/changepassword", PageController, :do_change_password
   end
 
   scope "/", UserEncryptionWeb do
